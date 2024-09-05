@@ -1,11 +1,13 @@
 import React from 'react';
+import { useAppContext } from '../context/AppContext';
 
 const SearchForm = () => {
+  const { setSearchTerm } = useAppContext();
   const handleSubmit = (e) => {
     e.preventDefault;
-    const SearchValue = e.target.elements.search.value;
-    if (!SearchValue) return;
-    console.log(SearchValue);
+    const searchValue = e.target.elements.search.value;
+    if (!searchValue) return;
+    setSearchTerm(searchValue);
   };
   return (
     <section>
@@ -13,7 +15,7 @@ const SearchForm = () => {
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="cat"
+          placeholder="Dove"
           className="form-input search-input"
           name="search"
         />
